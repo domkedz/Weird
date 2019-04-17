@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd django/weird/
 python manage.py makemigrations
 python manage.py migrate
 python manage.py makemigrations weirdapp
