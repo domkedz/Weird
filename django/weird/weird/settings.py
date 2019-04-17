@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-if os.environ['ENVIRONMENT'] == "PROD":
-    import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,7 +27,6 @@ SECRET_KEY = 'y7bpu07xr%9+sv%qg)$o*c7i2e)y^j@@a&_mg!t=srs(jmma7='
 if os.environ['ENVIRONMENT'] == "PROD":
     DEBUG = False
     ALLOWED_HOSTS = [str(os.environ['HOST'])]
-    django_heroku.settings(locals())
 else:
     DEBUG = True
     ALLOWED_HOSTS = [str(os.environ['HOST'])]
@@ -136,3 +133,8 @@ USE_TZ = True
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.normpath(os.path.join(ENV_PATH, '..', 'public/static/'))
+
+
+if os.environ['ENVIRONMENT'] == "PROD":
+    import django_heroku
+    django_heroku.settings(locals())
