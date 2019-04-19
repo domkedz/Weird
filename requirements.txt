@@ -4,3 +4,4 @@ djangorestframework
 gunicorn
 django-heroku
 pytest-django
+pytest
