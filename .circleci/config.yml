@@ -49,7 +49,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            . django/weird
+#            . django/weird
             python3 -m pytest
 
       - store_artifacts:
