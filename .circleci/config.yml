@@ -29,7 +29,6 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-            pip install pytest
 
       - save_cache:
           paths:
@@ -41,6 +40,11 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             echo 'export ENVIRONMENT="PROD"' >> $BASH_ENV # Redirect MY_ENV_VAR into $BASH_ENV
+
+      - run:
+          name: "Install pytest"
+          command: |
+            python3 -m pip install pytest
 
       # run tests!
       # this example uses Django's built-in test-runner
