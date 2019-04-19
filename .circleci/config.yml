@@ -49,6 +49,7 @@ jobs:
       - run:
           name: run tests
           command: |
+            . venv/bin/activate
             pytest
 
       - store_artifacts:
