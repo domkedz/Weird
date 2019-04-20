@@ -10,7 +10,7 @@ string = 'This is a long looong test sentence,\n' \
 class Weird:
     # indicator = '\n-weird-\n' # I know...
     indicator = '-weird-'
-    max_string_size = 100
+    max_string_size = 200
 
     @staticmethod
     def same_letters(word):
