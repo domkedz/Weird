@@ -11,8 +11,8 @@ class WeirdFixtures:
     def my_text(self):
         string = 'Czesc,\n'\
                  'jestem Dominik\n'\
-                 'test: jeden, oko, dwa, drzewa, ,slowo. ?!% t%!?s 121d%dsc^&cds? 123 432423 ++++\n'\
-                 '___ --- -wdkas- ::dfs:: .:hejka:. .... weird   ,      , {}{} {sdsd}'\
+                 'test: ,slowo. ?!% t%!?s 121d%dsc^&cds?  ++++\n'\
+                 '-wdkas- ::dfs:: .:hejka:.  {sdsd}'\
                  'milego dnia'
         return string
 
