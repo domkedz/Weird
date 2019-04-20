@@ -8,7 +8,8 @@ string = 'This is a long looong test sentence,\n' \
 
 
 class Weird:
-    indicator = '\n-weird-\n'
+    # indicator = '\n-weird-\n' # I know...
+    indicator = '-weird-'
     max_string_size = 100
 
     @staticmethod
@@ -48,6 +49,11 @@ class Encoder(Weird):
         self.string = orginal_string
 
     @staticmethod
+    def check_lenght(string):
+        if len(string) > Weird.max_string_size:
+            raise ValueError
+
+    @staticmethod
     def shift_letters(word):
         word = list(word)
         if len(word) == 4: # for change letters in every case in short words
@@ -72,20 +78,20 @@ class Encoder(Weird):
         return changed_words
 
     def encode_string(self):
+        Encoder.check_lenght(self.string)
         proper_words = Weird.find_words_for_change(self.string)
         shuffled_words = Encoder.change_words(proper_words)
 
         self.string = Weird.replace_words(self.string, proper_words, shuffled_words)
 
-        proper_words.sort() # zroic tak
+        proper_words.sort()
 
         return Weird.indicator + \
                self.string + \
                Weird.indicator + \
-               " ".join(proper_words) # czy tu sorted ???
+               " ".join(proper_words)
 
 
-# napisac exception jesli zly string
 
 class Decoder(Weird):
 
@@ -105,7 +111,7 @@ class Decoder(Weird):
             self.weird_text = str(matched_groups.group(2))
             self.proper_words = str(matched_groups.group(5))
         else:
-            raise WrongText
+            raise ValueError
 
     @staticmethod
     def remove_indicator(string):
@@ -136,12 +142,12 @@ class Decoder(Weird):
         return self.weird_text
 
 
-
-e=Encoder(string)
-encoded_string = e.encode_string()
-
-d=Decoder(encoded_string)
-decoded_string = d.decode_string()
-
-print(encoded_string)
-print(decoded_string)
+# executing:
+# e=Encoder(string)
+# encoded_string = e.encode_string()
+#
+# d=Decoder(encoded_string)
+# decoded_string = d.decode_string()
+#
+# print(encoded_string)
+# print(decoded_string)
