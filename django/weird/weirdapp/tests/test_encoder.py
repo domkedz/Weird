@@ -14,10 +14,6 @@ class TestWeird(fixtures.WeirdFixtures):
         assert Encoder.same_letters(longer_proper_word) == False
         assert Encoder.same_letters(weird_word) == False
 
-    def test_finding_words(self, simple_text, weird_text):
-        assert Weird.find_words(simple_text) == ['tiiis', 'this', 'tis']
-        assert Weird.find_words(weird_text) != ['%^&*', 't%!?s', '321']
-
     def test_finding_words_for_change(self, simple_text, weird_text):
         assert Weird.find_words_for_change(simple_text) == ['this']
         assert Weird.find_words_for_change(weird_text) == []
@@ -46,7 +42,7 @@ class TestEncoder(fixtures.WeirdFixtures):
 
     def test_output_encoder(self, example_text):
         pattern = r'('+Weird.indicator+')(.*(\n.*)*)('+Weird.indicator+')(.*)'
-        e=Encoder(example_text)
+        e = Encoder(example_text)
         encoded_string = e.encode_string()
         tokenize_re = re.compile(pattern)
         matched_groups = tokenize_re.match(encoded_string)
@@ -54,8 +50,10 @@ class TestEncoder(fixtures.WeirdFixtures):
 
     def test_output2_encoder(self, my_text):
         pattern = r'('+Weird.indicator+')(.*(\n.*)*)('+Weird.indicator+')(.*)'
-        e=Encoder(my_text)
+        e = Encoder(my_text)
         encoded_string = e.encode_string()
         tokenize_re = re.compile(pattern)
         matched_groups = tokenize_re.match(encoded_string)
+        print(matched_groups)
         assert matched_groups != None
+

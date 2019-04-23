@@ -52,10 +52,10 @@ class WeirdFixtures:
 
     @pytest.fixture
     def output1(self):
-        string = '\n—weird—\n'\
+        string = '—weird—'\
                  'Tihs is a lnog loonog tset sntceene,\n'\
                  'wtih smoe big (biiiiig) wdros!'\
-                 '\n—weird—\n'\
+                 '—weird—'\
                  'long looong sentence some test This with words'
         return string
 
